@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "django-cmu"
+version = "0.1.0"
+description = ""
+authors = ["Pavlo-Lovchytskyi <pastet1990@icloud.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.0.2"
+django-environ = "^0.11.2"
+psycopg2 = "^2.9.9"
+cloudinary = "^1.39.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
