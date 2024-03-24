@@ -12,20 +12,26 @@
 
 <form action="{% url 'users:login' %}" method="post">
     {% csrf_token %}
-    <div>
-        <label> Username:
-            {{ form.username }}
-        </label>
+    <div class="row g-3 align-items-center">
+        <div class="col">
+            <label for="inputUsername" class="col-form-label">Username</label>
+        </div>
+        <div class="col">
+            <input type="text" id="inputUsername" class="form-control" name="username">
+        </div>
     </div>
 
-    <div>
-        <label>Password:
-            {{ form.password }}
-        </label>
+    <div class="row g-3 align-items-center mt-2">
+        <div class="col">
+            <label for="inputPassword" class="col-form-label">Password</label>
+        </div>
+        <div class="col">
+            <input type="password" id="inputPassword" class="form-control" name="password" aria-describedby="passwordHelpInline">
+        </div>
     </div>
 
     <div class="grid">
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
 

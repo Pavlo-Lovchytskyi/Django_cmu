@@ -1,8 +1,21 @@
-{% extends "cmu/base.html"%}
-{% block content %}
+{% extends "cmu/base2.html"%}
 
-{% if user.is_authenticated %}
-<h1> Welcome {{user.username}}</h1>
-{% endif %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                {% if user.is_authenticated %}
+                    {% for pic in photo %}
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <img class="avatar me-3" src="{{ pic.avatar.url }}" alt="photo">
+                            <h1>{{ user.username }}</h1>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
+
+

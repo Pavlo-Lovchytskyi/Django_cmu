@@ -9,17 +9,6 @@
     <p class="hidden">Создайте свой уникальный профиль, подключайтесь к сообществам по интересам, и вместе с CMU погрузитесь в мир удовольствия и развлечений. Добро пожаловать в будущее развлечений — добро пожаловать в CMU!</p>
 
 </div>
-{% if user.is_authenticated %}
-    <span>
-        Welcome <b>{{ user.username }}!</b>
-        <div class="btn-container">
-            <a href="{% url 'users:logout' %}">
-                <button type="button" class="btn btn-outline-primary btn-lg"> Logout</button>
-            </a>
-        </div>
-    </span>
-    {% else %}
-
     <div class="btn-container">
         <a href="{% url 'users:signup' %}">
             <button type="button" class="btn btn-outline-primary btn-lg">SignUp</button>
@@ -28,6 +17,5 @@
             <button type="button" class="btn btn-outline-primary btn-lg">Login</button>
         </a>
     </div>
-    {% endif %}
 
 {% endblock %}
