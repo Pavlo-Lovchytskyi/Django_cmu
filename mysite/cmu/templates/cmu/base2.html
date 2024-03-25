@@ -11,7 +11,7 @@
     <style>
         .header-image {
             width: 100%;
-            max-height: 200px; /* Или любое другое значение, которое определяет максимальную высоту */
+            max-height: 100px; /* Или любое другое значение, которое определяет максимальную высоту */
             object-fit: cover; /* Сохранять соотношение сторон и подгонять изображение по размеру контейнера */
         }
         header {
@@ -21,18 +21,23 @@
 </head>
 <body>
     <header>
-        <img class="header-image" src="{% static 'cmu/head.jpeg' %}" alt="Header Image">
+        <a href="{% url 'cmu:index' %}">
+            <img class="header-image" src="{% static 'cmu/head.jpeg' %}" alt="Header Image">
+        </a>
     </header>
     <div class="position-absolute top-0 end-0 m-3">
         <a href="{% url 'users:logout' %}">
             <button type="button" class="btn btn-outline-primary">Logout</button>
         </a>
     </div>
-        {% block content %}
-        {% endblock %}
-        
-        {% block games %}
-        {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            {% block content %}
+            {% endblock %}
+            
+            {% block games %}
+            {% endblock %}
+        </div>
     </div>
 </body>
 </html>
