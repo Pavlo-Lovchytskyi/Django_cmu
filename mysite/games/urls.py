@@ -6,5 +6,7 @@ app_name = 'games'
 
 urlpatterns = [
     path('', views.main, name='main'), 
-    path("<int:page>", views.main, name = "main_paginate"),  
+    path("main/<int:page>", views.main, name = "main_paginate"),
+    path('my-games/', views.my_games, name='my_games'), 
+    path("my-games/<int:page>", views.my_games, name = "my_games_paginate"),  
 ]

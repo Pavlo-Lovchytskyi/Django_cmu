@@ -20,24 +20,34 @@
     </style>
 </head>
 <body>
-    <header>
+    <header class="mb-3">
         <a href="{% url 'cmu:index' %}">
             <img class="header-image" src="{% static 'cmu/head.jpeg' %}" alt="Header Image">
         </a>
     </header>
-    <div class="position-absolute top-0 end-0 m-3">
+    <div class="position-absolute top-0 end-0 m-4">
         <a href="{% url 'users:logout' %}">
-            <button type="button" class="btn btn-outline-primary">Logout</button>
+            <button type="button" class="btn btn-primary">Logout</button>
         </a>
     </div>
     <div class="container-fluid">
         <div class="row">
-            {% block content %}
-            {% endblock %}
-            
-            {% block games %}
-            {% endblock %}
+            <div class="col-md-3" style=" border: 1px solid rgb(255, 0, 0); border-radius: 20px; background-color: aqua;">
+                {% block left_content %}
+                {% endblock %}
+            </div>
+
+            <div class="col-md-6">
+                {% block center_content %}
+                {% endblock %}
+            </div>
+
+            <div class="col-md-3" style=" border: 1px solid rgb(255, 0, 0); border-radius: 20px; background-color: aqua;">
+                {% block right_content %}
+                {% endblock %}
+            </div>
         </div>
     </div>
 </body>
 </html>
+

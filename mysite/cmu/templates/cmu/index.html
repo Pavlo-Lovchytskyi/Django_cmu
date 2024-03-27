@@ -1,42 +1,49 @@
-{% extends "cmu/base2.html"%}
+{% extends "cmu/base2.html" %}
 
-{% block content %}
-
-<div class="col-md-3" style="background-color: yellow;">
-    <!-- Левый блок -->
-</div>
-<div class="col-md-6">
-    <!-- Центральный блок -->
-    <div class="container d-flex flex-column" style="height: calc(100vh - 100px); background-color: rgb(16, 215, 241);">
-        <div class="row justify-content-center flex-grow-1">
-            <div class="col-md-12 text-center">
-                {% if user.is_authenticated %}
-                    <div class="mb-3">
-                        <img class="avatar" src="{{ profile.avatar.url }}" alt="photo">
-                        <h1>{{ user.username }}</h1>
-                        <h1>{{ age }}</h1>
-                        <h1>{{ profile.country }}</h1>
-                        <h1>{{ profile.email }}</h1>
-                        <ul class="list-group list-group-horizontal.flex-fill">
-                            <li class="list-group-item"> My games</li>
-                            <li class="list-group-item">{{ profile.game.count }}</li>
-                        </ul>
-                        <ul class="list-group list-group-horizontal-sm.flex-fill">
-                            <li class="list-group-item">My songs</li>
-                            <li class="list-group-item">{{ profile.song.count }}</li>
-                        </ul>
-                        <ul class="list-group list-group-horizontal-lg.flex-fill">
-                            <li class="list-group-item">My films</li>
-                            <li class="list-group-item">{{ profile.film.count }}</li>
-                        </ul>
-                        
-                    </div>
-                {% endif %}
-            </div>
+{% block center_content %}
+<!-- Центральный блок -->
+<div class="container d-flex flex-column" style="height: calc(100vh - 100px); border: 1px solid rgb(255, 0, 0);  border-radius: 20px;">
+    <div class="row justify-content-center flex-grow-1">
+        <div class="col-md-12 text-center">
+            {% if user.is_authenticated %}
+                <div class="mb-3">
+                    <img class="avatar" src="{{ profile.avatar.url }}" alt="photo">
+                    <h1>{{ user.username }}</h1>
+                    <h1>{{ age }}</h1>
+                    <h1>{{ profile.country }}</h1>
+                    <h1>{{ profile.email }}</h1>
+                    <ul class="list-group list-group-horizontal.flex-fill">
+                        <li class="list-group-item"><a href="{% url 'games:my_games' %}">My games</a></li>
+                        <li class="list-group-item">{{ profile.game.count }}</li>
+                    </ul>
+                    <ul class="list-group list-group-horizontal-sm.flex-fill">
+                        <li class="list-group-item">My songs</li>
+                        <li class="list-group-item">{{ profile.song.count }}</li>
+                    </ul>
+                    <ul class="list-group list-group-horizontal-lg.flex-fill">
+                        <li class="list-group-item">My films</li>
+                        <li class="list-group-item">{{ profile.film.count }}</li>
+                    </ul>
+                    
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Добавлен блок с четырьмя кнопками -->
+    <div class="row justify-content-between">
+        <div class="col-md-2">
+            <a href="{% url 'games:main' %}" class="btn btn-primary">Games</a>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary">Button 2</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary">Button 3</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary">Button 4</button>
         </div>
     </div>
 </div>
-<div class="col-md-3" style="background-color: green;">
-    <!-- Правый блок -->
-</div>
 {% endblock %}
+

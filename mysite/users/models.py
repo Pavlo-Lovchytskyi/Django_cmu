@@ -6,15 +6,14 @@ from cloudinary.models import CloudinaryField
 from games.models import Game
 
 
-
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = CloudinaryField('image')
     birthday = models.DateField(null=False)
     country = models.CharField(max_length=10, null=False)
     email = models.EmailField(null=False)
-    game = models.ManyToManyField(Game)
+    is_banned = models.BooleanField(default=False)
+    game = models.ManyToManyField(Game, blank=True)
 
     def __str__(self):
         return self.user.username

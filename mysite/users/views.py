@@ -15,7 +15,7 @@ def signup_user(request):
 
         if form.is_valid():
             form.save()
-            return redirect(to='cmu:index')
+            return render(request, 'users/create_profile.html', context={"form": RegisterForm()})
         
         else:
             return render(request, 'users/signup.html', context={'form': form})

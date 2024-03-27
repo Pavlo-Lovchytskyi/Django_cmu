@@ -26,7 +26,10 @@ class LoginForm(AuthenticationForm):
 
 class ProfileForm(forms.ModelForm):
     avatar = forms.ImageField(widget=forms.FileInput())
+    birthday = forms.DateField(widget=forms.DateInput)
+    country = forms.CharField(max_length=10, required=True, widget=forms.TextInput())
+    email = forms.EmailField(max_length=50, required=True, widget=forms.EmailInput())
 
     class Meta:
         model = Profile
-        fields = ['avatar']
+        fields = ['avatar', 'birthday', 'country', 'email']
