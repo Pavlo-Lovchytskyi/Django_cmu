@@ -1,0 +1,13 @@
+{% extends 'cmu/base2.html' %}
+{% block center_content %}
+
+{% if game_detail %}
+<div class="container">
+    <img src="{{ game_detail.title.url }}" alt="title">
+    <h3>{{ game_detail.name }}</h3>
+    <p><strong>Price:</strong> {{ game_detail.price }} $</p>
+    <p><strong>Date of release:</strong> {{ game_detail.date_of_release }}</p>
+</div>
+{% endif %}
+
+{% endblock %}

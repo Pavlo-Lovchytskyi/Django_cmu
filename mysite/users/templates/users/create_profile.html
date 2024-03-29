@@ -2,11 +2,34 @@
 
 {% block content %}
 
-<h2>Create Your Profile</h2>
-<form method="POST" enctype="multipart/form-data">
+{% if messages %}
+<div>
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert-{{ message.tags }}" {% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<form action="{% url 'users:create_profile' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
+    <h2>Create Your Profile</h2>
+    <div class="mb-3">
+        <label for="id_avatar" class="form-label">Avatar</label>
+        {{ profile_form.avatar }}
+    </div>
+    <div class="mb-3">
+        <label for="id_birthday" class="form-label">Birthday</label>
+        {{ profile_form.birthday }}
+    </div>
+    <div class="mb-3">
+        <label for="id_country" class="form-label">Country</label>
+        {{ profile_form.country }}
+    </div>
+    <div class="mb-3">
+        <label for="id_email" class="form-label">Email</label>
+        {{ profile_form.email }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 {% endblock %}

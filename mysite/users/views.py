@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ProfileForm
 
 
 def signup_user(request):
@@ -14,12 +14,30 @@ def signup_user(request):
         form = RegisterForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            return render(request, 'users/create_profile.html', context={"form": RegisterForm()})
+            user = form.save()
+            login(request, user)
+            return redirect(to='users:create_profile')
         
         else:
             return render(request, 'users/signup.html', context={'form': form})
     return render(request, 'users/signup.html', context={"form": RegisterForm()})
+
+
+@login_required
+def create_profile(request):
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, request.FILES)
+
+        if profile_form.is_valid():
+            profile = profile_form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect(to='cmu:index')
+
+    else:
+        profile_form = ProfileForm()
+
+    return render(request, 'users/create_profile.html', {'profile_form': profile_form})
 
 def login_user(request):
     if request.user.is_authenticated:

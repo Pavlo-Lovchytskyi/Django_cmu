@@ -6,9 +6,13 @@
         {% for game in games %}
         <div class="col mb-4">
             <div class="card" style="border-radius: 20px; height: 100%;">
-                <img src="{{ game.title.url }}" class="card-img-top" alt="Game Image" style="height: 200px; object-fit: cover;">
+                
+                    <img src="{{ game.title.url }}" class="card-img-top" alt="Game Image" style="height: 200px; object-fit: cover;">
+                
                 <div class="card-body">
-                    <h5 class="card-title">{{ game.name }}</h5>
+                    <a href="/games/{{game.name}}">
+                        <h5 class="card-title">{{ game.name }}</h5>
+                    </a>
                     <p class="card-text">Price: {{ game.price }}</p>
                     <p class="card-text">Realise: {{ game.date_of_release }}</p>
                 </div>
